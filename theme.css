@@ -1,0 +1,12 @@
+:root {
+  --ink: #12231f;
+  --muted: #5c716a;
+  --paper: #f4f1e8;
+  --paper-deep: #e6e2d5;
+  --board: #173d34;
+  --board-line: rgba(200, 225, 187, 0.08);
+  --lime: #d9f36a;
+  --lime-soft: #eef9ba;
+  --coral: #f47d68;
+  --shadow: rgba(22, 46, 38, 0.18);
+}

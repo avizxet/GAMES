@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: 'Space Grotesk', sans-serif;
+  background-image: radial-gradient(circle at 15% 5%, rgba(217, 243, 106, 0.32), transparent 26rem), linear-gradient(135deg, rgba(255,255,255,0.6), transparent 45%);
+}
+
+.game-shell { width: min(100% - 40px, 980px); margin: 0 auto; padding: 56px 0 28px; }
+.intro { max-width: 620px; margin-bottom: 28px; }
+.eyebrow, .hud-label, .message-kicker { margin: 0 0 8px; color: var(--muted); font: 500 0.72rem/1 'DM Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; }
+h1 { margin: 0; font-size: clamp(2.9rem, 8vw, 5.8rem); line-height: 0.92; letter-spacing: -0.05em; }
+.intro-copy { max-width: 520px; margin: 20px 0 0; color: var(--muted); font-size: 1.05rem; line-height: 1.55; }
+
+.game-panel { padding: 20px; background: rgba(255, 255, 255, 0.64); border: 1px solid rgba(18, 35, 31, 0.1); box-shadow: 0 22px 70px var(--shadow); }
+.hud { display: grid; grid-template-columns: 1fr 1fr 1.3fr; gap: 16px; padding: 4px 4px 20px; }
+.hud > div { min-width: 0; padding-right: 16px; border-right: 1px solid rgba(18, 35, 31, 0.14); }
+.hud > div:last-child { border: 0; }
+.hud strong { display: block; font-size: 1.45rem; line-height: 1; }
+.hud strong small { color: var(--muted); font-size: 0.9rem; font-weight: 400; }
+#status[data-state='dead'] { color: var(--coral); }
+#status[data-state='won'] { color: #548f42; }
+
+.canvas-frame { position: relative; overflow: hidden; max-width: 600px; margin: 0 auto; background: var(--board); aspect-ratio: 1; }
+canvas { display: block; width: 100%; height: 100%; }
+.message { position: absolute; inset: 0; display: grid; place-content: center; gap: 8px; padding: 20px; color: var(--lime-soft); text-align: center; background: rgba(23, 61, 52, 0.72); transition: opacity 180ms ease; }
+.message.hidden { opacity: 0; pointer-events: none; }
+.message .message-kicker { color: var(--lime); }
+.message strong { font-size: clamp(1rem, 3vw, 1.35rem); }
+
+.controls-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 20px 4px 4px; }
+.control-hint { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; color: var(--muted); font-size: 0.85rem; }
+.key { display: inline-grid; place-items: center; width: 25px; height: 25px; color: var(--ink); background: var(--paper-deep); border-bottom: 2px solid rgba(18,35,31,0.2); font: 500 0.7rem 'DM Mono', monospace; }
+.actions { display: flex; gap: 8px; }
+.button { border: 0; padding: 12px 17px; color: var(--ink); background: var(--paper-deep); font: 600 0.85rem 'Space Grotesk', sans-serif; cursor: pointer; transition: transform 150ms ease, background 150ms ease; }
+.button:hover { transform: translateY(-2px); background: #d9d5c8; }
+.button-primary { color: var(--ink); background: var(--lime); }
+.button-primary:hover { background: #c9e457; }
+.footer-note { display: flex; justify-content: space-between; gap: 16px; margin-top: 16px; color: var(--muted); font: 0.72rem 'DM Mono', monospace; text-transform: uppercase; }
+
+@media (max-width: 620px) {
+  .game-shell { width: min(100% - 24px, 500px); padding-top: 30px; }
+  .game-panel { padding: 12px; }
+  .hud { gap: 8px; padding-bottom: 12px; }
+  .hud > div { padding-right: 8px; }
+  .hud strong { font-size: 1.1rem; }
+  .controls-row, .footer-note { align-items: flex-start; flex-direction: column; }
+  .controls-row { padding-top: 14px; }
+  .actions { width: 100%; }
+  .button { flex: 1; }
+}
+
+function randomCell() {
+  return openCells[Math.floor(Math.random() * openCells.length)] *;
+}
